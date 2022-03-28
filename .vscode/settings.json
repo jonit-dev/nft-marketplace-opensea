@@ -1,0 +1,5 @@
+{
+  "solidity.defaultCompiler": "localNodeModule",
+  "workbench.colorTheme": "Dracula high contrast",
+  "solidity.packageDefaultDependenciesDirectory": "./nft-smart-contract/node_modules"
+}
