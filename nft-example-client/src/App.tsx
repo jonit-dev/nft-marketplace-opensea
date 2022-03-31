@@ -6,6 +6,7 @@ import { nftStore } from "./store/NFT.store";
 
 function App() {
   const Web3Api = useMoralisWeb3Api();
+  console.log(Web3Api);
   const { isInitialized } = useMoralis();
 
   useEffect(() => {

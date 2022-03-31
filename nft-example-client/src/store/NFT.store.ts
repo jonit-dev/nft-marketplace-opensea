@@ -45,9 +45,9 @@ class NFTStore {
 
       const ownersOf = tokenIdOwners.map((data) => data.owner_of);
 
-      await sleep(500);
+      await sleep(500); // moralis garbage doesnt allow too many requests in a row in their free tier
 
-      this.nftTokens.map((data) => {
+      this.nftTokens.forEach((data) => {
         if (data.token_id === token.token_id) {
           data.owners = ownersOf;
         }
