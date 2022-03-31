@@ -2,7 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { uiColors } from "../constants/colors";
 
-interface IProps {
+interface IProps
+  extends React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   label: string;
   className: string;
 }

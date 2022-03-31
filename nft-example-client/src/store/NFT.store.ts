@@ -1,4 +1,4 @@
-import { action, makeAutoObservable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import sleep from "sleep-promise";
 import { appEnv } from "../constants/env";
 import { INFTToken, ITokenIdOwner } from "../types/token.types";
@@ -32,31 +32,33 @@ class NFTStore {
     return response.result as unknown as INFTToken[];
   }
 
+  private setOwnersLoaded() {
+    this.ownersLoaded = true;
+  }
+
   public async loadTokenIdOwners(Web3API: any) {
     console.log(`loading owners for ${this.nftTokens.length} tokens`);
 
-    action(async () => {
-      for (const token of this.nftTokens) {
-        console.log(`loading owners for token ${token.token_id}`);
+    for (const token of this.nftTokens) {
+      console.log(`loading owners for token ${token.token_id}`);
 
-        const tokenIdOwners = await this.getTokenIdOwners(
-          token.token_id,
-          Web3API
-        );
+      const tokenIdOwners = await this.getTokenIdOwners(
+        token.token_id,
+        Web3API
+      );
 
-        const ownersOf = tokenIdOwners.map((data) => data.owner_of);
+      const ownersOf = tokenIdOwners.map((data) => data.owner_of);
 
-        await sleep(500); // moralis garbage doesnt allow too many requests in a row in their free tier
+      await sleep(1000); // moralis garbage doesnt allow too many requests in a row in their free tier
 
-        this.nftTokens.forEach((data) => {
-          if (data.token_id === token.token_id) {
-            data.owners = ownersOf;
-          }
-        });
-      }
+      this.nftTokens.forEach((data) => {
+        if (data.token_id === token.token_id) {
+          data.owners = ownersOf;
+        }
+      });
+    }
 
-      this.ownersLoaded = true;
-    });
+    this.setOwnersLoaded();
   }
 
   public async getTokenIdOwners(

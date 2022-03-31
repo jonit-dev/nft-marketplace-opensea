@@ -32,9 +32,9 @@ export const NavBar: React.FC<IProps> = (props) => {
       </Brand>
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
-          <Link to="/mint" className="navbar-item">
+          {/* <Link to="/mint" className="navbar-item">
             Mint
-          </Link>
+          </Link> */}
           {/* <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">More</a>
             <div className="navbar-dropdown">
