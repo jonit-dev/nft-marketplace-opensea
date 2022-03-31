@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Header } from "./Header";
+import { NavBar } from "./NavBar";
 
 interface IProps {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ interface IProps {
 export const Page: React.FC<IProps> = ({ children }) => {
   return (
     <Container>
-      <Header />
+      <NavBar />
       <MainSection>{children}</MainSection>
     </Container>
   );

@@ -24,7 +24,7 @@ export const Home: React.FC<IProps> = observer((props) => {
           <strong>Owners</strong>:{" "}
           {!nftStore.ownersLoaded
             ? "Loading..."
-            : nft.owners?.join(", ") || "No owners for this NFT."}
+            : nft.owners?.length || "No owners for this NFT."}
         </p>
         <span className="button is-link modal-button" data-target="modal-card">
           Buy on OpenSea
