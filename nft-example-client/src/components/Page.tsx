@@ -10,6 +10,7 @@ export const Page: React.FC<IProps> = ({ children }) => {
   return (
     <Container>
       <NavBar />
+
       <MainSection>{children}</MainSection>
     </Container>
   );
